@@ -1,32 +1,54 @@
-import { Button, TextField } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Button } from "@mui/material";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getUserDetails } from "../../redux/features/userSlice/userSlice";
+import { Link } from "react-router-dom";
+import {
+  getUserDetails,
+  getUsers,
+  addUser,
+  deleteUser,
+} from "../../redux/features/userProfileSlice/userProfileSlice.js";
 
-const Profile = () => {
+function Profile() {
+  const users = useSelector((state) => state.userProfile.users);
+  const { status, error } = useSelector((state) => state.userProfile);
   const dispatch = useDispatch();
-  const params = useParams();
-  const userDetails = useSelector((state) => state.users.userDetails);
-  const [updatedUser, setUpdatedUser] = useState(userDetails);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   // useEffect(() => {
-  //   getUserDetails(params.id);
-  // }, [dispatch]);
+  //   dispatch(getUserDetails({ id: 1 }));
+  // }, [users]);
 
-  // useEffect(() => {
-  //   setUpdatedUser(userDetails);
-  // }, [userDetails]);
-
-  // console.log(userDetails, "userDetails");
-  // console.log(updatedUser, "updatedUserDetails");
+  // const user = useSelector((state) => state.users.user);
+  // console.log(users);
 
   return (
-    <div>
-      <TextField />
-      <Button>Save</Button>
+    <div className="Profile">
+      {status === "loading" && <h2>Loading...</h2>}
+      {error && <h2>An error occured: {error}</h2>}
+      <button
+        onClick={() => {
+          dispatch(addUser({ id: 11, name: "sardor", surname: "timofey" }));
+        }}
+      >
+        Add user
+      </button>
+
+      {users.map((user) => (
+        <div style={{ display: "flex" }}>
+          <h3 onClick={() => dispatch(deleteUser(user.id))} key={user.id}>
+            {user.name}
+          </h3>
+          <Link to={`/profile-details/${user.id}`}>
+            <Button>Details</Button>
+          </Link>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default Profile;
