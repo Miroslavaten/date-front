@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "ernas",
+      "surname": "luchshiy"
+    },
+    {
+      "id": 2,
+      "name": "mira",
+      "surname": "ten"
+    },
+    {
+      "id": 3,
+      "name": "mina",
+      "surname": "naz"
+    },
+    {
+      "id": 5,
+      "name": "tima",
+      "surname": "timofey"
+    },
+    {
+      "id": 10,
+      "name": "isken",
+      "surname": "timofey"
+    },
+    {
+      "id": 11,
+      "name": "sardor",
+      "surname": "timofey"
+    }
+  ]
+}
