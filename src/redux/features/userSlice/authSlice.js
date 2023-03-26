@@ -1,6 +1,6 @@
 import React from "react";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { LOGIN_API, REGISTER_API } from "../../consts";
+import { LOGIN_API, REGISTER_API } from "../../../helpers/consts";
 
 const initialState = {
   msg: "",
