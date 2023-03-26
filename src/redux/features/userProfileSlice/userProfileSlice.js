@@ -52,10 +52,10 @@ export const addUser = createAsyncThunk(
     try {
       const response = await axios.post(API_PROFILE, user);
 
-      console.log(response);
-      if (!response.ok) {
-        throw new Error("Server Error: cannot add the user");
-      }
+      console.log(response.data);
+      // if (!response.ok) {
+      //   throw new Error("Server Error: cannot add the user");
+      // }
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -166,7 +166,9 @@ const userSlice = createSlice({
       .addCase(addUser.pending, setLoading)
       .addCase(addUser.fulfilled, (state, action) => {
         state.status = "resolved";
-        state.users = state.users.push(action.payload);
+        state.users = [...state.users, action.payload];
+        console.log(state.users);
+        console.log(action.payload);
         state.error = null;
       })
       .addCase(addUser.rejected, setError)
@@ -182,8 +184,9 @@ const userSlice = createSlice({
         state.status = "resolved";
         state.users = state.users.map((user) => {
           if (user.id === action.payload.id) {
-            user = action.payload;
+            return action.payload;
           }
+          return user;
         });
       })
       .addCase(editUserDetails.rejected, setError);

@@ -1,0 +1,320 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profilePage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 10%;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.profile_container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 2% 3%;
+  gap: 3%;
+}
+
+.user {
+  width: 100px;
+  background-color: lightblue;
+  height: 50px;
+}
+
+.profile {
+  width: 98%;
+  height: 72%;
+  background-color: #fff;
+  border-radius: 10px;
+  border-color: #8d3aa4;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 2%;
+  gap: 3%;
+  border: #8d3aa4 1px solid;
+}
+
+.profile_left {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/* .saveBtn {
+  width: 25%;
+  height: 8%;
+  background-color: #bfbfbf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 0.9rem;
+} */
+
+.frontImg {
+  width: 30%;
+  height: 95%;
+  background-color: #787878;
+  border-radius: 25px;
+  background-image: url("https://assets-prd.ignimgs.com/2021/01/27/violet-evergarden-button-1611757901991.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.frontImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile_img {
+  width: 95%;
+  height: 30%;
+  /* position: relative; */
+}
+
+.swiper_icon {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.profile_name {
+  height: 15%;
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.profile_name input {
+  height: 65%;
+  border-radius: 10px;
+  border: #c252e1 1px solid;
+  box-shadow: 0 0 10px rgba(194, 82, 225, 0.25);
+  padding: 1%;
+  box-sizing: border-box;
+}
+
+.profile_name input:hover {
+  border: #8d3aa4 1px solid;
+  box-shadow: 0 0 10px rgba(194, 82, 225, 0.25);
+}
+
+.profile_name input:focus-within {
+  border-color: #8d3aa4;
+}
+
+.profile_desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+  font-size: 0.7rem;
+  height: 30%;
+  justify-content: space-around;
+}
+
+.profile_desc div {
+  padding: 4%;
+  height: 80%;
+  border-radius: 25px;
+  border: #c252e1 1px solid;
+  box-shadow: 0 0 10px rgba(194, 82, 225, 0.25);
+}
+
+.profile_right {
+  width: 30%;
+}
+
+.profile_selects {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 50%;
+  justify-content: flex-end;
+}
+
+.select_gender {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5%;
+  font-size: 0.7rem;
+}
+
+.select_adress {
+  width: 90%;
+  border-radius: 10px;
+  border: #c252e1 1px solid;
+  box-shadow: 0 0 10px rgba(194, 82, 225, 0.25);
+  height: 57%;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 10%;
+  box-sizing: border-box;
+}
+
+.select_adress:hover {
+  border: #8d3aa4 1px solid;
+  box-shadow: 0 0 10px rgba(194, 82, 225, 0.25);
+}
+
+.select_adress:focus-within {
+  border-color: #8d3aa4;
+}
+
+.select_status {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5%;
+  font-size: 0.7rem;
+}
+
+.profile_interests {
+  width: 100%;
+  height: 50%;
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.interests_list {
+  width: 100%;
+  height: 70%;
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.interests_wrapper {
+  width: 100%;
+  height: 80%;
+  border-radius: 25px;
+  border: #c252e1 1px solid;
+  box-shadow: 0 0 10px rgba(194, 82, 225, 0.25);
+  box-sizing: border-box;
+  padding: 5%;
+  position: relative;
+}
+
+.interests_item {
+  display: inline-block;
+  width: auto;
+  padding: 2% 3%;
+  height: 25px;
+  background-color: #e0d9f6;
+  border-radius: 30px;
+  width: auto;
+  position: relative;
+}
+
+.save_btn {
+  width: 95%;
+  height: 13%;
+  background-color: #c252e1;
+  color: #fff;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  padding: 4%;
+  font-weight: 700;
+}
+
+/* ! MUI */
+/* шрифт инпутов */
+.css-es1mxv-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-size: 0.7rem !important;
+}
+
+.css-es1mxv-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-size: 0.7rem !important;
+}
+
+.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  height: 20px !important;
+  min-height: 0 !important;
+}
+
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 1rem !important;
+  min-height: 0 !important;
+}
+
+.css-sfq3ah-MuiFormControl-root {
+  margin: 0 !important;
+}
+
+/* ! EDIT PROFILE */
+.edit_img {
+  width: 22px;
+  height: 22px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: #f72585;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  box-sizing: border-box;
+  padding-bottom: 1%;
+}
+
+.edit_interests {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  background-color: #0e88bf !important;
+  border: #6ecbf5 1px solid;
+  box-shadow: 0 0 10px rgba(110, 203, 245, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  box-sizing: border-box;
+  bottom: 8px;
+  right: 8px;
+}
+
+.edit_interest {
+  width: 15px;
+  height: 15px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: #f72585;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  position: absolute;
+  top: -1px;
+  right: -3px;
+}
