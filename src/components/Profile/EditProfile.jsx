@@ -21,18 +21,20 @@ import { Navigation } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import { genderObj, interestsObj } from "../../helpers/consts";
 
 const EditProfile = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
   const userDetails = useSelector((state) => state.userProfile.userDetails);
   const [updatedUser, setUpdatedUser] = useState(userDetails);
+
+  const dispatch = useDispatch();
+  const params = useParams();
   const navigate = useNavigate();
-  const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
-  const [orientation, setOrientation] = useState("");
-  const [adress, setAdress] = useState("");
-  const [status, setStatus] = useState("");
+
+  function deleteImage(id) {
+    try {
+    } catch (error) {}
+  }
 
   useEffect(() => {
     dispatch(getUserDetails(params.id));
@@ -52,27 +54,8 @@ const EditProfile = () => {
   };
 
   console.log(userDetails, "userDetails");
-  console.log(updatedUser, "updatedUserDetails");
 
   const ageArr = [];
-  const orientArr = [
-    "Гетеро",
-    "Гей",
-    "Лесбиянка",
-    "Бисексуал(ка)",
-    "Пансексуал(ка)",
-    "Демисексуал(ка)",
-    "Асексуал(ка)",
-    "Квир",
-    "Не определился(лась)",
-  ];
-
-  const statusArr = [
-    "Долгосрочный партнер",
-    "Найти друга",
-    "Повеселиться",
-    "One Date",
-  ];
 
   for (let i = 18; i < 100; i++) {
     ageArr.push(i);
@@ -84,11 +67,12 @@ const EditProfile = () => {
       <div className={styles.profile_container}>
         <div className={styles.user}></div>
         <div className={styles.profile}>
-          <div className={styles.frontImg}>
-            {/* <img
-                src="https://assets-prd.ignimgs.com/2021/01/27/violet-evergarden-button-1611757901991.jpg"
-                alt=""
-              /> */}
+          <div
+            className={styles.frontImg}
+            style={{
+              backgroundImage: `url(${updatedUser?.images[0].image})`,
+            }}
+          >
             <div className={styles.edit_img}>
               <p>-</p>
             </div>
@@ -98,33 +82,19 @@ const EditProfile = () => {
               <Swiper
                 slidesPerView={3}
                 spaceBetween={10}
-                // pagination={{
-                //   clickable: true,
-                // }}
                 navigation={true}
-                // modules={[Pagination]}
                 modules={[Navigation]}
                 className="mySwiper"
               >
-                <SwiperSlide>
-                  <img
-                    src="https://studybreaks.com/wp-content/uploads/2021/11/violetevergarden-e1638229152774.png"
-                    alt=""
-                  />
-                  <div className={styles.edit_img}>
-                    <p>-</p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className={styles.edit_img}>
-                    <p>-</p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className={styles.edit_img}>
-                    <p>-</p>
-                  </div>
-                </SwiperSlide>
+                {updatedUser?.images.map((item) => (
+                  <SwiperSlide>
+                    <img src={item.image} alt="" />
+                    <div className={styles.edit_img}>
+                      <p>-</p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+
                 <SwiperSlide
                   style={{
                     display: "flex",
@@ -142,21 +112,32 @@ const EditProfile = () => {
             </div>
             <div className={styles.profile_name}>
               <p>Фамилия</p>
-              <input type="text" size="small" />
+              <input
+                type="text"
+                size="small"
+                onChange={handleChange}
+                value={updatedUser?.surname}
+                name="surname"
+              />
             </div>
             <div className={styles.profile_name}>
               <p>Имя</p>
-              <input type="text" size="small" />
+              <input
+                type="text"
+                size="small"
+                name="name"
+                value={updatedUser?.name}
+                onChange={handleChange}
+              />
             </div>
             <div className={styles.profile_desc}>
               <p>Про меня:</p>
-              <div>
-                <p>
-                  Я человек простой, холостой. Люблю жизнь и прогулки под
-                  дождем. Нет ничего красивее в этом мире чем смотреть на
-                  рассветы и закаты.
-                </p>
-              </div>
+              <input
+                type="text"
+                name="description"
+                value={updatedUser?.description}
+                onChange={handleChange}
+              />
             </div>
           </div>
           <div className={styles.profile_right}>
@@ -176,13 +157,13 @@ const EditProfile = () => {
                   }}
                   size="small"
                 >
-                  <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
+                  {/* <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
                     Пол
-                  </InputLabel>
+                  </InputLabel> */}
                   <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
-                    value={gender}
+                    defaultValue={genderObj[updatedUser?.gender]}
                     label="Age"
                     color="secondary"
                     sx={{
@@ -192,7 +173,9 @@ const EditProfile = () => {
                       borderRadius: "10px",
                       // boxShadow: "0 0 10px rgba(194, 82, 225, 0.25)",
                     }}
-                    onChange={(e) => setGender(e.target.value)}
+                    name="gender"
+                    value={updatedUser?.gender}
+                    onChange={handleChange}
                   >
                     <MenuItem sx={{ fontSize: "12px" }} value={"M"}>
                       Мужской
@@ -218,24 +201,25 @@ const EditProfile = () => {
                   }}
                   size="small"
                 >
-                  <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
+                  {/* <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
                     Возраст
-                  </InputLabel>
+                  </InputLabel> */}
                   <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
-                    value={age}
                     label="Age"
-                    onChange={(e) => setAge(e.target.value)}
                     color="secondary"
                     sx={{
                       height: 35,
                       width: "100%",
                       borderRadius: "10px",
                     }}
+                    name="age"
+                    value={updatedUser?.age}
+                    onChange={handleChange}
                   >
                     {ageArr.map((item) => (
-                      <MenuItem sx={{ fontSize: "12px" }} value={age}>
+                      <MenuItem sx={{ fontSize: "12px" }} value={item}>
                         {item}
                       </MenuItem>
                     ))}
@@ -257,27 +241,50 @@ const EditProfile = () => {
                   }}
                   size="small"
                 >
-                  <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
+                  {/* <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
                     Ориентация
-                  </InputLabel>
+                  </InputLabel> */}
                   <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
-                    value={orientation}
                     label="Age"
-                    onChange={(e) => setOrientation(e.target.value)}
                     color="secondary"
                     sx={{
                       height: 35,
                       width: "100%",
                       borderRadius: "10px",
                     }}
+                    name="sexual_orientation"
+                    value={updatedUser?.sexual_orientation}
+                    onChange={handleChange}
                   >
-                    {orientArr.map((item) => (
-                      <MenuItem sx={{ fontSize: "12px" }} value={10}>
-                        {item}
-                      </MenuItem>
-                    ))}
+                    <MenuItem sx={{ fontSize: "12px" }} value={"HE"}>
+                      Гетеро
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"HO"}>
+                      Гей
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"HO"}>
+                      Лесбиянка
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"BI"}>
+                      Бисексуал(ка)
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"PA"}>
+                      Пансексуал(ка)
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"DE"}>
+                      Демисексуал(ка)
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"AS"}>
+                      Асексуал(ка)
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"QU"}>
+                      Квир
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"ND"}>
+                      Не определился(лась)
+                    </MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -287,48 +294,11 @@ const EditProfile = () => {
                   className={styles.select_adress}
                   type="text"
                   size="small"
-                  value={adress}
                   placeholder="Адрес"
-                  onChange={(e) => {
-                    setAdress(e.target.value);
-                  }}
+                  name="address"
+                  value={updatedUser?.adress}
+                  onChange={handleChange}
                 />
-                {/* <FormControl
-                    sx={{
-                      m: 1,
-                      width: "90%",
-                      fontSize: "12px",
-                      marginTop: 0,
-                      border: "#c252e1 1px solid",
-                      borderRadius: "10px",
-                      boxShadow: "0 0 10px rgba(194, 82, 225, 0.25)",
-                      margin: 0,
-                    }}
-                    size="small"
-                  >
-                    <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
-                      Адрес
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small"
-                      id="demo-select-small"
-                      value={orientation}
-                      label="Age"
-                      onChange={(e) => setOrientation(e.target.value)}
-                      color="secondary"
-                      sx={{
-                        height: 35,
-                        width: "100%",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      {orientArr.map((item) => (
-                        <MenuItem sx={{ fontSize: "12px" }} value={10}>
-                          {item}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl> */}
               </div>
               <div className={styles.select_status}>
                 <p>Статус</p>
@@ -345,27 +315,35 @@ const EditProfile = () => {
                   }}
                   size="small"
                 >
-                  <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
+                  {/* <InputLabel sx={{ fontSize: "12px" }} id="demo-select-small">
                     Статус
-                  </InputLabel>
+                  </InputLabel> */}
                   <Select
                     labelId="demo-select-small"
                     id="fullwidth"
-                    value={orientation}
                     label="Age"
-                    onChange={(e) => setStatus(e.target.value)}
                     color="secondary"
                     sx={{
                       height: 35,
                       width: "100%",
                       borderRadius: "10px",
                     }}
+                    name="status"
+                    value={updatedUser?.status}
+                    onChange={handleChange}
                   >
-                    {statusArr.map((item) => (
-                      <MenuItem sx={{ fontSize: "12px" }} value={10}>
-                        {item}
-                      </MenuItem>
-                    ))}
+                    <MenuItem sx={{ fontSize: "12px" }} value={"LP"}>
+                      Долгосрочный партнер
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"FR"}>
+                      Найти друга
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"HF"}>
+                      Повеселиться
+                    </MenuItem>
+                    <MenuItem sx={{ fontSize: "12px" }} value={"OD"}>
+                      One Date
+                    </MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -374,18 +352,20 @@ const EditProfile = () => {
               <div className={styles.interests_list}>
                 <p>Мои интересы (1/8):</p>
                 <div className={styles.interests_wrapper}>
-                  <div className={styles.interests_item}>
-                    <p>Спорт</p>
-                    <div className={styles.edit_interest}>
-                      <p>-</p>
+                  {updatedUser?.interests.map((item) => (
+                    <div className={styles.interests_item}>
+                      <p>{interestsObj[item]}</p>
+                      <div className={styles.edit_interest}>
+                        <p>-</p>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                   <div className={styles.edit_interests}>
                     <span>+</span>
                   </div>
                 </div>
               </div>
-              <div className={styles.save_btn}>
+              <div className={styles.save_btn} onClick={handleSave}>
                 <p>Сохранить изменения</p>
               </div>
             </div>

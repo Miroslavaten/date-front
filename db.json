@@ -2,63 +2,68 @@
   "users": [
     {
       "id": 1,
-      "name": "ernas",
-      "surname": "luchshiy"
+      "name": "Эрнас",
+      "surname": "Лучший",
+      "gender": "M",
+      "sexual_orientation": "DE",
+      "description": "string",
+      "status": "LP",
+      "interests": [
+        "SP",
+        "MS"
+      ],
+      "age": "20",
+      "address": "Бишкек",
+      "images": [
+        {
+          "id": 1,
+          "image": "https://pbs.twimg.com/media/Eb-lba0UcAAbJLx.jpg",
+          "profile": 1
+        },
+        {
+          "id": 2,
+          "image": "https://i.pinimg.com/736x/a7/26/ba/a726baa5a6d522e24ef546d8a2d3e32d.jpg",
+          "profile": 1
+        },
+        {
+          "id": 3,
+          "image": "https://i.pinimg.com/736x/f2/06/96/f206961ce8da130c69270c6a33e82b33.jpg",
+          "profile": 1
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "mira",
-      "surname": "ten"
-    },
-    {
-      "id": 3,
-      "name": "mina",
-      "surname": "naz"
-    },
-    {
-      "id": 5,
-      "name": "tima",
-      "surname": "timofey"
-    },
-    {
-      "id": 10,
-      "name": "isken",
-      "surname": "timofey"
-    },
-    {
-      "name": "sardor",
-      "surname": "owa",
-      "id": 11
-    },
-    {
-      "name": "new",
-      "surname": "user",
-      "id": 12
-    },
-    {
-      "name": "jaga",
-      "surname": "owa",
-      "id": 13
-    },
-    {
-      "name": "success",
-      "surname": "owa",
-      "id": 14
-    },
-    {
-      "name": "rena",
-      "surname": "gay",
-      "id": 15
-    },
-    {
-      "name": "sa",
-      "surname": "sa",
-      "id": 16
-    },
-    {
-      "name": "success",
-      "surname": "ura",
-      "id": 17
+      "name": "биба",
+      "surname": "бобов",
+      "gender": "F",
+      "sexual_orientation": "HE",
+      "description": "описание",
+      "status": "FR",
+      "interests": [
+        "SP",
+        "MS",
+        "AT"
+      ],
+      "age": "20",
+      "address": "Бишкек",
+      "images": [
+        {
+          "id": 1,
+          "image": "https://pbs.twimg.com/media/Eb-lba0UcAAbJLx.jpg",
+          "profile": 1
+        },
+        {
+          "id": 2,
+          "image": "https://i.pinimg.com/736x/a7/26/ba/a726baa5a6d522e24ef546d8a2d3e32d.jpg",
+          "profile": 1
+        },
+        {
+          "id": 3,
+          "image": "https://i.pinimg.com/736x/f2/06/96/f206961ce8da130c69270c6a33e82b33.jpg",
+          "profile": 1
+        }
+      ]
     }
   ]
 }

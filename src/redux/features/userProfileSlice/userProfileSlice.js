@@ -120,7 +120,7 @@ export const editUserDetails = createAsyncThunk(
 
 const initialState = {
   users: [],
-  userDetails: {},
+  userDetails: null,
   status: null,
   error: null,
   loading: false,
@@ -160,6 +160,7 @@ const userSlice = createSlice({
       .addCase(getUserDetails.fulfilled, (state, action) => {
         state.status = "resolved";
         state.userDetails = action.payload;
+        console.log(state.userDetails);
         state.error = null;
       })
       .addCase(getUserDetails.rejected, setError)
