@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import styles from "./Profile.module.css";
 import "./Swiper.css";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
