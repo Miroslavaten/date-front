@@ -5,7 +5,7 @@ import Profile from "./components/Profile/Profile.jsx";
 import ProfileCard from "./components/Profile/ProfileCard.jsx";
 import Profiles from "./components/Profile/Profiles.jsx";
 import LoginPage from "./Pages/AuthorizationPage/LoginPage";
-import RegisterPage from "./Pages/AuthorizationPage/RegisterPage";
+
 import EditProfilePage from "./Pages/EditProfilePage/EditProfilePage.jsx";
 import MainPage from "./Pages/MainPage/MainPage";
 import ProfileDetailsPage from "./Pages/ProfileDetailsPage/ProfileDetailsPage.jsx";
@@ -17,6 +17,7 @@ const MainRoutes = () => {
     { link: "/login", element: <LoginPage />, id: 2 },
     { link: "/register", element: <RegisterPage />, id: 3 },
     { link: "/profiles", element: <Profiles />, id: 4 },
+
     { link: "/profile-details/:id", element: <ProfileDetailsPage />, id: 5 },
     { link: "/edit-profile/:id", element: <EditProfilePage />, id: 6 },
     { link: "/profile/:id", element: <ProfilePage />, id: 7 },

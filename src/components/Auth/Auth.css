@@ -1,0 +1,238 @@
+button {
+  cursor: pointer;
+}
+li {
+  list-style-type: none;
+}
+.auth-logo {
+  margin: 2rem 0 0 2rem;
+  max-width: 151px;
+  width: 100%;
+  position: fixed;
+}
+.auth-container {
+  margin: 0 100px 0 200px;
+  position: absolute;
+  top: 6rem;
+}
+.auth__card {
+  width: 406px;
+  padding: 31px 0px 49px 0;
+  border-radius: 20px;
+  border: 1px solid rgba(194, 82, 225, 1);
+  background-color: rgba(255, 255, 255, 1);
+}
+.auth__card-content {
+  max-width: 291px;
+  width: 100%;
+  margin: 0 auto;
+}
+.auht__card-btns {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-btn {
+  font-size: 15px;
+  color: #000;
+  margin-right: 35px;
+  border: none;
+  background-color: transparent;
+}
+.card-btn:last-child {
+  margin-right: 0;
+}
+.active-card-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(194, 82, 225, 1);
+}
+.auth__card-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 17px;
+}
+.first-input {
+  margin-bottom: 33px;
+}
+.card-input {
+  padding: 13px 0px 13px 16px;
+  width: 291px;
+  border-radius: 10px;
+  border: 1px solid rgba(220, 220, 220, 1);
+}
+
+.remember-btn {
+  font-size: 13px;
+  margin-bottom: 27px;
+}
+.auth-btn {
+  background-color: rgba(194, 82, 225, 1);
+  color: #fff;
+  width: 268px;
+  padding: 14px 0;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.separator {
+  margin: 36px 0;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.separator-text {
+  font-size: 10px;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 10;
+  border-bottom: 1px solid rgba(181, 181, 181, 1);
+}
+
+.separator:not(:empty)::before {
+  margin-right: 28px;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 28px;
+}
+.google-btn {
+  border-radius: 50px;
+  border: 1px solid rgba(194, 82, 225, 1);
+  background-color: transparent;
+  padding: 5px 7px 5px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.google-logo {
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+}
+
+.main-title {
+  margin-bottom: 16px;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: Inter;
+  color: rgba(38, 38, 38, 1);
+}
+
+.main-desc {
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 551px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.main-btn {
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 19px 138px;
+  border-radius: 25px;
+  border: none;
+  background-color: rgba(88, 106, 226, 1);
+}
+
+.about {
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-img {
+  max-width: 471px;
+  width: 100%;
+}
+
+.premium {
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.premium-img {
+  max-width: 551px;
+  width: 100%;
+  height: 276px;
+  background-color: grey;
+}
+
+.security {
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.security-img {
+  max-width: 527px;
+  width: 100%;
+  height: 287px;
+  background-color: grey;
+}
+
+.career {
+  margin: 65px 0 110px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.career-img {
+  max-width: 390px;
+  width: 100%;
+  height: 327px;
+  background-color: grey;
+}
+
+.auth__sidebar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+}
+.auth__sidebar-links {
+  margin-bottom: 55px;
+  text-align: center;
+}
+.sidebar__links-img {
+  margin-bottom: 7px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.footer__col-icons {
+  display: flex;
+  align-items: center;
+}
+.footer__col-icon {
+  margin-right: 42px;
+  cursor: pointer;
+}
+.footer__col-item {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
