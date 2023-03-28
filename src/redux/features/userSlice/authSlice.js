@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { LOGIN_API, REGISTER_API } from "../../../helpers/consts";
+import {
+  LOGIN_API,
+  REFRESH_TOKEN_API,
+  REGISTER_API,
+} from "../../../helpers/consts";
 
 const initialState = {
   msg: "",
@@ -31,6 +36,26 @@ export const signInUser = createAsyncThunk("user/signInUser", async (user) => {
   });
   return await res.json();
 });
+
+export const checkAuth = createAsyncThunk("user/checkAuth", async (user) => {
+  let token = JSON.parse(localStorage.getItem("token"));
+  try {
+    let res = await axios.post(REFRESH_TOKEN_API, {
+      refresh: token.refresh,
+    });
+    localStorage.setItem(
+      "token",
+      JSON.stringify({ refresh: token.refresh, access: res.data.access })
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+// useEffect(() => {
+//   if (localStorage.getItem("token")) {
+//     checkAuth();
+//   }
+// }, []);
 
 const authSlice = createSlice({
   name: "user",
