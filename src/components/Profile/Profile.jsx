@@ -33,6 +33,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const user = useSelector((state) => state.userProfile.userDetails);
+
   const { status, error } = useSelector((state) => state.userProfile);
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const Profile = () => {
           <div
             className={styles.frontImg}
             style={{
-              backgroundImage: `url(${user?.images[0].image})`,
+              backgroundImage: `url(${user?.images[0]?.image})`,
             }}
           ></div>
           <div className={styles.profile_left}>
@@ -80,20 +81,6 @@ const Profile = () => {
                     <img src={item.image} alt="" />
                   </SwiperSlide>
                 ))}
-
-                <SwiperSlide
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <img
-                    className={styles.swiper_icon}
-                    src={require("./../../assets/images/addBtn.png")}
-                    alt=""
-                  />
-                </SwiperSlide>
               </Swiper>
             </div>
             <div className={styles.profile_name}>

@@ -11,10 +11,9 @@ export const REFRESH_TOKEN_API =
 
 export const API_PROFILE = "http://localhost:8000/users";
 
-
-export const LOGIN_API = "https://tinder-web.onrender.com/api/v1/account/login";
-export const REGISTER_API =
-  "https://tinder-web.onrender.com/api/v1/account/register";
+// !==================== RECS =======================
+export const API_RECS =
+  "https://tinder-web.onrender.com/api/v1/recommendations/";
 
 export const orientationObj = {
   HE: "Гетеро",
