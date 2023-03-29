@@ -13,6 +13,7 @@ const initialState = {
   token: "",
   loading: false,
   error: "",
+  id: "",
 };
 
 export const signUpUser = createAsyncThunk("user/signUpUser", async (user) => {
@@ -23,6 +24,7 @@ export const signUpUser = createAsyncThunk("user/signUpUser", async (user) => {
     },
     body: JSON.stringify(user),
   });
+
   return await res.json();
 });
 
@@ -34,13 +36,14 @@ export const signInUser = createAsyncThunk("user/signInUser", async (user) => {
     },
     body: JSON.stringify(user),
   });
-  console.log(res.json());
+
 
   return await res.json();
 });
 
-export const checkAuth = createAsyncThunk("user/checkAuth", async (user) => {
+export const checkAuth = createAsyncThunk("user/checkAuth", async () => {
   let token = JSON.parse(localStorage.getItem("token"));
+  console.log(token);
   try {
     let res = await axios.post(REFRESH_TOKEN_API, {
       refresh: token.refresh,
@@ -53,11 +56,6 @@ export const checkAuth = createAsyncThunk("user/checkAuth", async (user) => {
     console.log(error);
   }
 });
-// useEffect(() => {
-//   if (localStorage.getItem("token")) {
-//     checkAuth();
-//   }
-// }, []);
 
 const authSlice = createSlice({
   name: "user",
@@ -96,22 +94,21 @@ const authSlice = createSlice({
     [signInUser.pending]: (state, action) => {
       state.loading = true;
     },
-    [signInUser.fulfilled]: (
-      state,
-      { payload: { error, msg, token, user } }
-    ) => {
+    [signInUser.fulfilled]: (state, { payload: { refresh, access } }) => {
+      console.log(refresh);
       state.loading = false;
-      if (error) {
-        state.error = error;
-      } else {
-        state.msg = msg;
-        state.token = token;
-        state.user = user;
 
-        localStorage.setItem("msg", msg);
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", token);
-      }
+      // if (error) {
+      //   state.error = error;
+      // } else {
+      //   state.msg = msg;
+      //   state.token = token;
+      //   state.user = user;
+
+      // localStorage.setItem("msg", msg);
+      // localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", JSON.stringify({ access, refresh }));
+      // }
     },
     [signInUser.rejected]: (state, action) => {
       state.loading = true;
