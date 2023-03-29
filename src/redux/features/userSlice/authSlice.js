@@ -34,6 +34,8 @@ export const signInUser = createAsyncThunk("user/signInUser", async (user) => {
     },
     body: JSON.stringify(user),
   });
+  console.log(res.json());
+
   return await res.json();
 });
 

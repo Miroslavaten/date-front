@@ -189,11 +189,12 @@
   font-size: 0.7rem;
   font-weight: 500;
   display: flex;
-  padding-left: 5%;
+  padding: 1% 5%;
   gap: 5px;
   align-items: center;
   /* padding: 5%; */
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .select_gender_icon {
@@ -336,6 +337,8 @@
   right: -3px;
   box-sizing: border-box;
   padding-bottom: 1%;
+  z-index: 666;
+  cursor: pointer;
 }
 
 .edit_interests {
