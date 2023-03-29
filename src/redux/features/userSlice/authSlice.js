@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  API_USER_ID,
   LOGIN_API,
   REFRESH_TOKEN_API,
   REGISTER_API,
@@ -13,6 +14,7 @@ const initialState = {
   token: "",
   loading: false,
   error: "",
+  user_id: null,
 };
 
 export const signUpUser = createAsyncThunk("user/signUpUser", async (user) => {
@@ -58,6 +60,23 @@ export const checkAuth = createAsyncThunk("user/checkAuth", async (user) => {
 //     checkAuth();
 //   }
 // }, []);
+
+export const getUserId = createAsyncThunk("user/getUserId", async () => {
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const Authorization = `Bearer ${token.access}`;
+    const config = {
+      headers: {
+        Authorization,
+      },
+    };
+    let res = await axios(API_USER_ID, config);
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const authSlice = createSlice({
   name: "user",
@@ -115,6 +134,9 @@ const authSlice = createSlice({
     },
     [signInUser.rejected]: (state, action) => {
       state.loading = true;
+    },
+    [getUserId.fulfilled]: (state, action) => {
+      state.user_id = action.payload;
     },
   },
 });

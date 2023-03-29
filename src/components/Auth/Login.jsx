@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
+  getUserId,
   signInUser,
   signUpUser,
 } from "../../redux/features/userSlice/authSlice";
@@ -34,6 +35,7 @@ const Auth = () => {
   const handleLogin = () => {
     console.log(username, password);
     dispatch(signInUser({ username, password }));
+    dispatch(getUserId());
   };
 
   const registerHandle = () => {

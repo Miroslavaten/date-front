@@ -15,6 +15,9 @@ export const API_PROFILE = "http://localhost:8000/users";
 export const API_RECS =
   "https://tinder-web.onrender.com/api/v1/recommendations/";
 
+export const API_USER_ID =
+  "https://tinder-web.onrender.com/api/v1/account/get_user_id/";
+
 export const orientationObj = {
   HE: "Гетеро",
   HO: "Гей",
