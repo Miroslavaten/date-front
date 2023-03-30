@@ -15,7 +15,6 @@ const MainRoutes = () => {
   const PUBLIC_ROUTES = [
     { link: "/", element: <MainPage />, id: 1 },
     { link: "/login", element: <LoginPage />, id: 2 },
-
     { link: "/profiles", element: <Profiles />, id: 4 },
 
     { link: "/profile-details/:id", element: <ProfileDetailsPage />, id: 5 },

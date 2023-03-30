@@ -38,6 +38,7 @@ const Auth = () => {
 
   const registerHandle = () => {
     console.log(username, email, password);
+
     if (password !== password2) {
       alert("passwords are not match");
       return;
