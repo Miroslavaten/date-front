@@ -21,7 +21,7 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <div className={styles.sidebar_wrapper}>
         <div className={styles.logo}>
-          {/* <img src="../../assets/images/logo.png" alt="" /> */}
+          <img src={require("../../assets/images/logo.png")} alt="" />
         </div>
         <div
           className={(styles.main, showMain && styles.active)}
@@ -31,7 +31,7 @@ const Sidebar = () => {
             setShowLikes(false);
             setShowChat(false);
             setShowProfile(false);
-            // navigate("/");
+            navigate("/main");
           }}
         >
           <div className={styles.img_wrapper}>
@@ -46,7 +46,7 @@ const Sidebar = () => {
             setShowLikes(false);
             setShowChat(false);
             setShowProfile(false);
-            // navigate("/");
+            navigate("/recs");
           }}
         >
           <div className={styles.img_wrapper} style={{ width: "70%" }}>

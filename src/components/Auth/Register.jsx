@@ -430,7 +430,7 @@ const Register = () => {
               <div className={styles.interests_list}>
                 <p>Мои интересы ({interests?.length || 0}/8):</p>
                 <div className={styles.interests_wrapper}>
-                  {interests.map((item, index) => (
+                  {interests?.map((item, index) => (
                     <div className={styles.interests_item}>
                       <p>{interestsObj[item]}</p>
                       <div

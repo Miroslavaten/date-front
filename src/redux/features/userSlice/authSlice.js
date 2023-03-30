@@ -133,7 +133,7 @@ const authSlice = createSlice({
     },
     [getUserId.fulfilled]: (state, action) => {
       state.user_id = action.payload;
-      console.log(state.user_id);
+      console.log(state.user_id, "user id");
     },
   },
 });

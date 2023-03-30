@@ -3,3 +3,16 @@
   font-family: "Inter", sans-serif;
   /* font-family: "Roboto", sans-serif; */
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-selection {
+  background-color: #c151e0;
+  color: #fff;
+}
+::selection {
+  background-color: #c151e0;
+  color: #fff;
+}

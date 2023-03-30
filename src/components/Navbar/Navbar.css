@@ -1,0 +1,45 @@
+.navbar {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding-right: 5%;
+}
+
+.nav-list {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.premium-btn {
+  width: 30px;
+  height: 100%;
+  background-image: url("../../assets/images/premuim-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.bell-btn {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../assets/images/bell-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.avatar-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  /* background-color: cadetblue; */
+  background-image: url("https://pbs.twimg.com/media/FFTwVD1XIAEsKI8?format=jpg&name=900x900");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
