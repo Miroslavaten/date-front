@@ -14,12 +14,14 @@ import securityPic from "../../imgs/securiti.png";
 import careerPic from "../../imgs/career-pic.png";
 import premiumPic from "../../imgs/premium-pic.png";
 import aboutImg from "../../imgs/about.png";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const LoginPage = () => {
   return (
     <>
+      <Sidebar />
       {/*--------------  SIDEBAR  -----------------  */}
-      <div>
+      {/* <div>
         <img className="auth-logo" src={logo} alt="" />
       </div>
       <div className="auth__sidebar">
@@ -49,7 +51,7 @@ const LoginPage = () => {
           </div>
           <p>Карьера</p>
         </div>
-      </div>
+      </div> */}
       {/*--------------  СONTENT  -----------------  */}
       <div className="auth-container">
         <section className="auth__header">

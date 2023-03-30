@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
-  editUserDetails,
   getUserDetails,
+  addUser,
 } from "../../redux/features/userProfileSlice/userProfileSlice";
 import {
   FormControl,
@@ -13,8 +13,8 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import styles from "./Profile.module.css";
-import "./Swiper.css";
+import styles from "../Profile/Profile.module.css";
+import "../Profile/Swiper.css";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,7 +26,7 @@ import "swiper/css/navigation";
 import { genderObj, interestsObj } from "../../helpers/consts";
 import Sidebar from "../Sidebar/Sidebar";
 
-const EditProfile = () => {
+const Register = () => {
   const userDetails = useSelector((state) => state.userProfile.userDetails);
   const user = useSelector((state) => state.auth.user);
 
@@ -89,7 +89,7 @@ const EditProfile = () => {
 
   const handleSave = () => {
     console.log({ ...updatedUser, images, interests });
-    dispatch(editUserDetails({ ...updatedUser, images, interests, user }));
+    dispatch(addUser({ ...updatedUser, images, interests, user }));
     navigate(`/profile/${params.id}`);
   };
 
@@ -517,4 +517,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default Register;

@@ -1,24 +1,27 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { API_PROFILE } from "../../../helpers/consts";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
+
+// const navigate = useNavigate();
+
+// export const navigateToRegister = () => {
+//   navigate("/register");
+// };
 
 export const getUsers = createAsyncThunk(
   "userProfile/getUsers",
 
   async function (_, { rejectWithValue }) {
     try {
-      // const response = await axios.get(API_PROFILE).then((res) => {
-      //   console.log(res);
-      //   return res.data;
-      // });
-      // const finalResponse = await response;
-      // if (finalResponse.ok) {
-      //   throw new Error("Server Error: cannot fetch users");
-      // }
-      // console.log(finalResponse);
-      // return finalResponse.data;
-
-      const response = await axios(API_PROFILE);
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const response = await axios(API_PROFILE, config);
       if (response.ok) {
         throw new Error("Server Error: cannot fetch users");
       }
@@ -34,7 +37,15 @@ export const getUserDetails = createAsyncThunk(
   "userProfile/getUserDetails",
   async function ({ id }, { rejectWithValue }) {
     try {
-      const response = await axios(`${API_PROFILE}/${id}`);
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      console.log("get details");
+      const response = await axios(`${API_PROFILE}${id}`, config);
       // if (!response.ok) {
       //   throw new Error("Server Error: cannot fetch the user");
       // }
@@ -49,9 +60,16 @@ export const getUserDetails = createAsyncThunk(
 export const addUser = createAsyncThunk(
   "users/addUser",
   async function (user, { rejectWithValue }) {
+    console.log(user);
     try {
-      const response = await axios.post(API_PROFILE, user);
-
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const response = await axios.post(API_PROFILE, user, config);
       console.log(response.data);
       // if (!response.ok) {
       //   throw new Error("Server Error: cannot add the user");
@@ -124,6 +142,7 @@ const initialState = {
   status: null,
   error: null,
   loading: false,
+  hasProfile: null,
 };
 
 const setError = (state, action) => {
@@ -162,8 +181,17 @@ const userSlice = createSlice({
         state.userDetails = action.payload;
         console.log(state.userDetails);
         state.error = null;
+        state.hasProfile = true;
+        console.log(state.hasProfile, "resolved");
+
+        // navigate("/");
       })
-      .addCase(getUserDetails.rejected, setError)
+      .addCase(getUserDetails.rejected, (state, action) => {
+        setError();
+        // navigate("/register");
+        state.hasProfile = false;
+        console.log(state.hasProfile, "rejected");
+      })
       .addCase(addUser.pending, setLoading)
       .addCase(addUser.fulfilled, (state, action) => {
         state.status = "resolved";
