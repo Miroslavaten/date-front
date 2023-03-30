@@ -6,6 +6,7 @@ import likes from "../../assets/images/likes.png";
 import messages from "../../assets/images/messages.png";
 import profile from "../../assets/images/profile.png";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Sidebar = () => {
   const [showLikes, setShowLikes] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
+  const user_id = useSelector((state) => state.auth.user_id);
 
   return (
     <div className={styles.sidebar}>
@@ -89,7 +91,7 @@ const Sidebar = () => {
             setShowMain(false);
             setShowLikes(false);
             setShowChat(false);
-            // navigate("/");
+            navigate(`/profile/${user_id}`);
           }}
         >
           <div className={styles.img_wrapper}>

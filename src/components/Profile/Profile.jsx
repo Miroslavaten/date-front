@@ -33,6 +33,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const user = useSelector((state) => state.userProfile.userDetails);
+  const user_id = useSelector((state) => state.auth.user_id);
 
   const { status, error } = useSelector((state) => state.userProfile);
 

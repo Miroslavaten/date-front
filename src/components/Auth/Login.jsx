@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getUserId,
   signInUser,
@@ -16,6 +16,9 @@ import {
   OutlinedInput,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Navigate, useNavigate } from "react-router-dom";
+import { getUserDetails } from "../../redux/features/userProfileSlice/userProfileSlice";
+import { useEffect } from "react";
 
 const Auth = () => {
   const [showForm, setShowForm] = useState(true);
@@ -26,21 +29,41 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user_id = useSelector((state) => state.auth.user_id);
+  const hasProfile = useSelector((state) => state.auth.hasProfile);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     console.log(username, password);
     dispatch(signInUser({ username, password }));
-    dispatch(getUserId());
+    await dispatch(getUserId());
+    console.log(user_id);
+    hasProfile ? navigate("/") : navigate("/register");
   };
+
+  useEffect(() => {
+    dispatch(getUserDetails(user_id));
+  }, [user_id]);
+
+  // useEffect(() => {
+  //   hasProfile ? navigate("/") : navigate("/register");
+  // }, [hasProfile]);
 
   const registerHandle = () => {
     console.log(username, email, password);
+    if (password !== password2) {
+      alert("passwords are not match");
+      return;
+    }
+
     dispatch(signUpUser({ username, email, password, password2 }));
+    navigate("");
   };
 
   return (

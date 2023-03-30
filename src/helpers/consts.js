@@ -5,11 +5,12 @@ export const REGISTER_API =
   "https://tinder-web.onrender.com/api/v1/account/register/";
 
 export const REFRESH_TOKEN_API =
-  "https://tinder-web.onrender.com/api/v1/account/refresh";
+  "https://tinder-web.onrender.com/api/v1/account/refresh/";
 
 // !==================== PROFILE =======================
 
-export const API_PROFILE = "http://localhost:8000/users";
+export const API_PROFILE =
+  "https://tinder-web.onrender.com/api/v1/account/profile/";
 
 // !==================== RECS =======================
 export const API_RECS =

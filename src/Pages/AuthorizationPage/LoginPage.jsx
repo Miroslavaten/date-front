@@ -9,14 +9,19 @@ import youtube from "../../imgs/youtube.png";
 import insta from "../../imgs/insta.png";
 import tt from "../../imgs/tt.png";
 import twitter from "../../imgs/twitter.png";
-
+import headerPic from "../../imgs/header-pic.png";
+import securityPic from "../../imgs/securiti.png";
+import careerPic from "../../imgs/career-pic.png";
+import premiumPic from "../../imgs/premium-pic.png";
 import aboutImg from "../../imgs/about.png";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const LoginPage = () => {
   return (
     <>
+      <Sidebar />
       {/*--------------  SIDEBAR  -----------------  */}
-      <div>
+      {/* <div>
         <img className="auth-logo" src={logo} alt="" />
       </div>
       <div className="auth__sidebar">
@@ -46,12 +51,14 @@ const LoginPage = () => {
           </div>
           <p>Карьера</p>
         </div>
-      </div>
+      </div> */}
       {/*--------------  СONTENT  -----------------  */}
       <div className="auth-container">
         <section className="auth__header">
           <Login />
-          <div className="auth__header-img">{/* <img src={} alt="" /> */}</div>
+          <div className="auth__header-img">
+            <img src={headerPic} alt="" />
+          </div>
         </section>
 
         <section className="about">
@@ -73,7 +80,7 @@ const LoginPage = () => {
 
         <section className="premium">
           <div className="premium-img">
-            <img src="" alt="" />
+            <img src={premiumPic} alt="" />
           </div>
           <div className="premium-text">
             <h2 className="main-title">Станьте премиум юзером</h2>
@@ -99,13 +106,13 @@ const LoginPage = () => {
             <button className="main-btn">Начать регистрацию</button>
           </div>
           <div className="security-img">
-            <img src="" alt="" />
+            <img src={securityPic} alt="" />
           </div>
         </section>
 
         <section className="career">
           <div className="career-img">
-            <img src="" alt="" />
+            <img src={careerPic} alt="" />
           </div>
           <div className="career-text">
             <h2 className="main-title">Карьера</h2>

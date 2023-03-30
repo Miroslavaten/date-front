@@ -36,16 +36,24 @@
     },
     {
       "id": 2,
-      "name": "",
-      "surname": "",
-      "gender": "",
-      "sexual_orientation": "",
-      "description": "",
-      "status": "",
-      "interests": [],
-      "age": "",
+      "name": "Нана",
+      "surname": "Мина",
+      "gender": "F",
+      "sexual_orientation": "ND",
+      "description": "qwerty",
+      "status": "FR",
+      "interests": [
+        "MS"
+      ],
+      "age": 18,
       "address": "",
-      "images": []
+      "images": [
+        {
+          "image": {},
+          "profile": "2"
+        }
+      ],
+      "user": ""
     }
   ]
 }
