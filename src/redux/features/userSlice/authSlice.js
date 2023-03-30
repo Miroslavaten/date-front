@@ -120,7 +120,7 @@ const authSlice = createSlice({
       //   state.error = error;
       // } else {
       //   state.msg = msg;
-      //   state.token = token;
+      state.token = access;
       //   state.user = user;
 
       // localStorage.setItem("msg", msg);

@@ -32,7 +32,8 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const user_id = useSelector((state) => state.auth.user_id);
-  const hasProfile = useSelector((state) => state.auth.hasProfile);
+  const hasProfile = useSelector((state) => state.userProfile.hasProfile);
+  const token = useSelector((state) => state.auth.token);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -40,15 +41,30 @@ const Auth = () => {
   };
 
   const handleLogin = async () => {
-    console.log(username, password);
     dispatch(signInUser({ username, password }));
-    await dispatch(getUserId());
-    console.log(user_id);
-    hasProfile ? navigate("/") : navigate("/register");
+  };
+
+  const handleGetDetails = async () => {
+    try {
+      await dispatch(
+        getUserDetails({
+          id: user_id,
+        })
+      );
+      navigate("/");
+    } catch (error) {
+      navigate("/register");
+    }
   };
 
   useEffect(() => {
-    dispatch(getUserDetails(user_id));
+    dispatch(getUserId());
+  }, [token]);
+
+  useEffect(() => {
+    handleGetDetails();
+    // dispatch(getUserDetails({ id: user_id }));
+    // hasProfile ? navigate("/") : navigate("/register");
   }, [user_id]);
 
   // useEffect(() => {
