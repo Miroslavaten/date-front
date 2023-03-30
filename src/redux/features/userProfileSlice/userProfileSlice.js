@@ -44,11 +44,11 @@ export const getUserDetails = createAsyncThunk(
           Authorization,
         },
       };
-      console.log("get details");
       const response = await axios(`${API_PROFILE}${id}`, config);
       // if (!response.ok) {
       //   throw new Error("Server Error: cannot fetch the user");
       // }
+      console.log("get details", response);
 
       if (response.data) return response.data;
     } catch (error) {
@@ -179,7 +179,6 @@ const userSlice = createSlice({
       .addCase(getUserDetails.fulfilled, (state, action) => {
         state.status = "resolved";
         state.userDetails = action.payload;
-        console.log(state.userDetails);
         state.error = null;
         state.hasProfile = true;
         console.log(state.hasProfile, "resolved");
