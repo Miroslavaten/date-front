@@ -113,7 +113,8 @@ const Main = () => {
   //   console.log(myIdentifier + " left the screen");
   // };
 
-  const [currentIndex, setCurrentIndex] = useState(users.length - 1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  console.log(currentIndex, "cur");
   const [lastDirection, setLastDirection] = useState();
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex);
