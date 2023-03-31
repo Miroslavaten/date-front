@@ -4,6 +4,7 @@ import App from "./App.js";
 import Profile from "./components/Profile/Profile.jsx";
 import ProfileCard from "./components/Profile/ProfileCard.jsx";
 import Profiles from "./components/Profile/Profiles.jsx";
+import ActivatePage from "./Pages/ActivatePage/ActivatePage.jsx";
 import LoginPage from "./Pages/AuthorizationPage/LoginPage";
 
 import EditProfilePage from "./Pages/EditProfilePage/EditProfilePage.jsx";
@@ -18,11 +19,12 @@ const MainRoutes = () => {
     { link: "/", element: <LoginPage />, id: 1 },
     { link: "/main", element: <MainPage />, id: 2 },
     { link: "/register", element: <RegisterPage />, id: 3 },
-    { link: "/profiles", element: <Profiles />, id: 4 },
-    { link: "/profile-details/:id", element: <ProfileDetailsPage />, id: 5 },
-    { link: "/edit-profile/:id", element: <EditProfilePage />, id: 6 },
-    { link: "/profile/:id", element: <ProfilePage />, id: 7 },
-    { link: "/recs", element: <RecsPage />, id: 8 },
+    { link: "/activate/:code", element: <ActivatePage />, id: 4 },
+    { link: "/profiles", element: <Profiles />, id: 5 },
+    { link: "/profile-details/:id", element: <ProfileDetailsPage />, id: 6 },
+    { link: "/edit-profile/:id", element: <EditProfilePage />, id: 7 },
+    { link: "/profile/:id", element: <ProfilePage />, id: 8 },
+    { link: "/recs", element: <RecsPage />, id: 9 },
   ];
   return (
     <Routes>

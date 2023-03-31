@@ -51,9 +51,9 @@ const Auth = () => {
     }
   };
 
-  const handleGetDetails = async () => {
+  const handleGetDetails = () => {
     try {
-      await dispatch(
+      dispatch(
         getUserDetails({
           id: user_id,
         })
@@ -65,12 +65,16 @@ const Auth = () => {
   };
 
   useEffect(() => {
-    dispatch(getUserId());
+    if (token) {
+      dispatch(getUserId());
+    }
   }, [token]);
 
   useEffect(() => {
-    // handleGetDetails();
-    dispatch(getUserDetails({ id: user_id }));
+    if (user_id) {
+      handleGetDetails();
+    }
+    // dispatch(getUserDetails({ id: user_id }));
     // hasProfile ? navigate("/") : navigate("/register");
   }, [user_id]);
 
@@ -80,13 +84,14 @@ const Auth = () => {
 
   const registerHandle = () => {
     console.log(username, email, password);
+
     if (password !== password2) {
       alert("passwords are not match");
       return;
     }
 
     dispatch(signUpUser({ username, email, password, password2 }));
-    navigate("");
+    navigate("/register");
   };
 
   return (

@@ -60,15 +60,23 @@ export const getUserDetails = createAsyncThunk(
 export const addUser = createAsyncThunk(
   "users/addUser",
   async function (user, { rejectWithValue }) {
+    console.log(user);
     try {
-      const response = await axios.post(API_PROFILE, user);
-
-      console.log(response.data);
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const response = await axios.post(API_PROFILE, user, config);
+      console.log(response.data, "datas");
       // if (!response.ok) {
       //   throw new Error("Server Error: cannot add the user");
       // }
       return response.data;
     } catch (error) {
+      console.log(error, "error");
       return rejectWithValue(error.message);
     }
   }

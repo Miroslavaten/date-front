@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.premium {
+  width: 331px;
+  height: 129px;
+  border: 1px solid rgba(194, 82, 225, 1);
+  border-radius: 25px;
+}
+.premium__blur {
+  width: 331px;
+  height: 129px;
+  border: 1px solid rgba(194, 82, 225, 1);
+  border-radius: 25px;
+  position: relative;
+}
+.premium__blur-btn {
+  position: absolute;
+  right: 0;
+  background-color: rgba(57, 0, 74, 1);
+  color: #fff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 8px;
+  width: 102px;
+  height: 27px;
+  border: none;
+  border-radius: 0 25px;
+}
