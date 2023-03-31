@@ -95,8 +95,10 @@ const authSlice = createSlice({
     [signUpUser.pending]: (state, action) => {
       state.loading = true;
     },
-    [signUpUser.fulfilled]: (state, payload) => {
+    [signUpUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
+      state.user = payload.email;
+      console.log(payload, "hello");
 
       // if (error) {
       //   state.error = error;

@@ -15,6 +15,7 @@ import careerPic from "../../imgs/career-pic.png";
 import premiumPic from "../../imgs/premium-pic.png";
 import aboutImg from "../../imgs/about.png";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Premium from "../../components/Premium/Premium";
 
 const LoginPage = () => {
   return (
@@ -166,6 +167,7 @@ const LoginPage = () => {
             </ul>
           </div>
         </footer>
+        <Premium />
       </div>
     </>
   );

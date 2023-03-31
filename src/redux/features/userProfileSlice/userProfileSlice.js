@@ -70,12 +70,13 @@ export const addUser = createAsyncThunk(
         },
       };
       const response = await axios.post(API_PROFILE, user, config);
-      console.log(response.data);
+      console.log(response.data, "datas");
       // if (!response.ok) {
       //   throw new Error("Server Error: cannot add the user");
       // }
       return response.data;
     } catch (error) {
+      console.log(error, "error");
       return rejectWithValue(error.message);
     }
   }

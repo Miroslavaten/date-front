@@ -44,9 +44,9 @@ const Auth = () => {
     dispatch(signInUser({ username, password }));
   };
 
-  const handleGetDetails = async () => {
+  const handleGetDetails = () => {
     try {
-      await dispatch(
+      dispatch(
         getUserDetails({
           id: user_id,
         })
@@ -58,11 +58,15 @@ const Auth = () => {
   };
 
   useEffect(() => {
-    dispatch(getUserId());
+    if (token) {
+      dispatch(getUserId());
+    }
   }, [token]);
 
   useEffect(() => {
-    handleGetDetails();
+    if (user_id) {
+      handleGetDetails();
+    }
     // dispatch(getUserDetails({ id: user_id }));
     // hasProfile ? navigate("/") : navigate("/register");
   }, [user_id]);
@@ -80,7 +84,7 @@ const Auth = () => {
     }
 
     dispatch(signUpUser({ username, email, password, password2 }));
-    navigate("");
+    navigate("/register");
   };
 
   return (

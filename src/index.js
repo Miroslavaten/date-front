@@ -6,6 +6,7 @@ import App from "./App";
 import "./index.css";
 import { store } from "./redux/store/index";
 import "./components/Auth/Auth.css";
+import "./components/Premium/Premium.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
