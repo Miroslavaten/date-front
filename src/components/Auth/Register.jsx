@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
-  editUserDetails,
   getUserDetails,
+  addUser,
 } from "../../redux/features/userProfileSlice/userProfileSlice";
 import {
   FormControl,
@@ -27,10 +27,18 @@ import { genderObj, interestsObj } from "../../helpers/consts";
 import Sidebar from "../Sidebar/Sidebar";
 
 const Register = () => {
-  const userDetails = useSelector((state) => state.userProfile.userDetails);
   const user = useSelector((state) => state.auth.user);
 
-  const [updatedUser, setUpdatedUser] = useState(userDetails);
+  const [updatedUser, setUpdatedUser] = useState({
+    name: "",
+    surname: "",
+    description: "",
+    gender: "M",
+    sexual_orientation: "HE",
+    age: 18,
+    status: "LP",
+    address: "",
+  });
   const [images, setImages] = useState([]);
   const [showImgInp, setShowImgInp] = useState(false);
   const [showInterests, setShowInterests] = useState(false);
@@ -39,18 +47,6 @@ const Register = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(getUserDetails(params.id));
-  }, [dispatch]);
-
-  useEffect(() => {
-    setUpdatedUser(userDetails);
-    if (userDetails) {
-      setImages(userDetails.images);
-      setInterests(userDetails.interests);
-    }
-  }, [userDetails]);
 
   function addImage(image) {
     console.log(image);
@@ -88,9 +84,9 @@ const Register = () => {
   };
 
   const handleSave = () => {
-    console.log({ ...updatedUser, images, interests });
-    dispatch(editUserDetails({ ...updatedUser, images, interests, user }));
-    navigate(`/profile/${params.id}`);
+    console.log({ ...updatedUser, images, interests, user });
+    dispatch(addUser({ ...updatedUser, images, interests, user }));
+    // navigate(`/profile/${params.id}`);
   };
 
   // console.log(userDetails, "userDetails");
@@ -134,7 +130,7 @@ const Register = () => {
                 className="mySwiper"
               >
                 {images.slice(1).map((item, index) => (
-                  <SwiperSlide>
+                  <SwiperSlide key={item.image}>
                     <img src={item.image} key={index} alt="" />
                     <div
                       className={styles.edit_img}
@@ -295,7 +291,11 @@ const Register = () => {
                     onChange={handleChange}
                   >
                     {ageArr.map((item) => (
-                      <MenuItem sx={{ fontSize: "12px" }} value={item}>
+                      <MenuItem
+                        key={item}
+                        sx={{ fontSize: "12px" }}
+                        value={item}
+                      >
                         {item}
                       </MenuItem>
                     ))}
@@ -431,7 +431,7 @@ const Register = () => {
                 <p>Мои интересы ({interests?.length || 0}/8):</p>
                 <div className={styles.interests_wrapper}>
                   {interests.map((item, index) => (
-                    <div className={styles.interests_item}>
+                    <div key={item} className={styles.interests_item}>
                       <p>{interestsObj[item]}</p>
                       <div
                         className={styles.edit_interest}
