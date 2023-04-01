@@ -18,84 +18,93 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 import { useRef } from "react";
 import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUsers } from "../../redux/features/userProfileSlice/userProfileSlice";
 
 const Main = () => {
-  const users = [
-    {
-      id: 1,
-      name: "Эрнас",
-      surname: "Лучший",
-      gender: "M",
-      sexual_orientation: "DE",
-      description: "описание",
-      status: "LP",
-      interests: ["SP", "MS", "SD"],
-      age: 20,
-      address: "Бишкек",
-      images: [
-        {
-          id: 1,
-          image: " https://pbs.twimg.com/media/Eb-lba0UcAAbJLx.jpg",
-          profile: 1,
-        },
-        {
-          id: 2,
-          image:
-            "https://i.pinimg.com/736x/a7/26/ba/a726baa5a6d522e24ef546d8a2d3e32d.jpg",
-          profile: 1,
-        },
-        {
-          id: 3,
-          image:
-            "https://i.pinimg.com/736x/f2/06/96/f206961ce8da130c69270c6a33e82b33.jpg",
-          profile: 1,
-        },
-      ],
-      user: "ernas@gmail.com",
-    },
-    {
-      id: 2,
-      name: "Нана",
-      surname: "Мина",
-      gender: "F",
-      sexual_orientation: "ND",
-      description: "qwerty",
-      status: "FR",
-      interests: ["MS"],
-      age: 18,
-      address: "Бишкек",
-      images: [
-        {
-          id: 1,
-          image:
-            "https://i1.sndcdn.com/artworks-X59Yfrvx1i32lser-oJrdkA-t500x500.jpg",
-          profile: 2,
-        },
-      ],
-      user: "aftaami@gmail.com",
-    },
-    {
-      id: 3,
-      name: "Чики",
-      surname: "Брики",
-      gender: "F",
-      sexual_orientation: "ND",
-      description: "qwerty",
-      status: "FR",
-      interests: ["MS"],
-      age: 18,
-      address: "Бишкек",
-      images: [
-        {
-          id: 1,
-          image:
-            "https://i1.sndcdn.com/artworks-X59Yfrvx1i32lser-oJrdkA-t500x500.jpg",
-          profile: 2,
-        },
-      ],
-      user: "aftaami@gmail.com",
-    },
-  ];
+  const users = useSelector((state) => state.userProfile.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+  // const users = [
+  //   {
+  //     id: 1,
+  //     name: "Эрнас",
+  //     surname: "Лучший",
+  //     gender: "M",
+  //     sexual_orientation: "DE",
+  //     description: "описание",
+  //     status: "LP",
+  //     interests: ["SP", "MS", "SD"],
+  //     age: 20,
+  //     address: "Бишкек",
+  //     images: [
+  //       {
+  //         id: 1,
+  //         image: " https://pbs.twimg.com/media/Eb-lba0UcAAbJLx.jpg",
+  //         profile: 1,
+  //       },
+  //       {
+  //         id: 2,
+  //         image:
+  //           "https://i.pinimg.com/736x/a7/26/ba/a726baa5a6d522e24ef546d8a2d3e32d.jpg",
+  //         profile: 1,
+  //       },
+  //       {
+  //         id: 3,
+  //         image:
+  //           "https://i.pinimg.com/736x/f2/06/96/f206961ce8da130c69270c6a33e82b33.jpg",
+  //         profile: 1,
+  //       },
+  //     ],
+  //     user: "ernas@gmail.com",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Нана",
+  //     surname: "Мина",
+  //     gender: "F",
+  //     sexual_orientation: "ND",
+  //     description: "qwerty",
+  //     status: "FR",
+  //     interests: ["MS"],
+  //     age: 18,
+  //     address: "Бишкек",
+  //     images: [
+  //       {
+  //         id: 1,
+  //         image:
+  //           "https://i1.sndcdn.com/artworks-X59Yfrvx1i32lser-oJrdkA-t500x500.jpg",
+  //         profile: 2,
+  //       },
+  //     ],
+  //     user: "aftaami@gmail.com",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Чики",
+  //     surname: "Брики",
+  //     gender: "F",
+  //     sexual_orientation: "ND",
+  //     description: "qwerty",
+  //     status: "FR",
+  //     interests: ["MS"],
+  //     age: 18,
+  //     address: "Бишкек",
+  //     images: [
+  //       {
+  //         id: 1,
+  //         image:
+  //           "https://i1.sndcdn.com/artworks-X59Yfrvx1i32lser-oJrdkA-t500x500.jpg",
+  //         profile: 2,
+  //       },
+  //     ],
+  //     user: "aftaami@gmail.com",
+  //   },
+  // ];
   // const [lastDirection, setLastDirection] = useState();
 
   // const onSwipe = (direction, nameToDelete) => {

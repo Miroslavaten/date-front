@@ -11,8 +11,19 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
 import { statusObj } from "../../helpers/consts";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getRecs } from "../../redux/features/recsSlice/recsSlice";
 
 const Recs = () => {
+  const recs = useSelector((state) => state.recs.recs);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getRecs());
+    console.log(recs);
+  }, [dispatch]);
+
   const users = [
     {
       id: 1,
@@ -139,7 +150,7 @@ const Recs = () => {
               modules={[EffectCoverflow, Pagination]}
               className="mySwiper"
             >
-              {users.map((user, index) => (
+              {recs.map((user, index) => (
                 <SwiperSlide>
                   {/* <TinderCard
                     ref={childRefs[index]}

@@ -43,12 +43,14 @@ const Auth = () => {
 
   const handleLogin = async () => {
     dispatch(signInUser({ username, password }));
-    if (user) {
-      console.log(user);
-      navigate("/");
-    } else {
-      navigate("/register");
-    }
+    console.log(user_id);
+    navigate("/main");
+    // if (user) {
+    //   console.log(user);
+    //   navigate("/");
+    // } else {
+    //   navigate("/register");
+    // }
   };
 
   const handleGetDetails = () => {

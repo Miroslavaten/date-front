@@ -25,6 +25,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { genderObj, interestsObj } from "../../helpers/consts";
 import Sidebar from "../Sidebar/Sidebar";
+import Navbar from "../Navbar/Navbar";
 
 const EditProfile = () => {
   const userDetails = useSelector((state) => state.userProfile.userDetails);
@@ -104,7 +105,9 @@ const EditProfile = () => {
     <div className={styles.profilePage}>
       <Sidebar />
       <div className={styles.profile_container}>
-        <div className={styles.user}></div>
+        {/* <div className={styles.user}></div> */}
+        <Navbar />
+
         <div className={styles.profile}>
           <div
             className={styles.frontImg}
@@ -430,17 +433,17 @@ const EditProfile = () => {
               <div className={styles.interests_list}>
                 <p>Мои интересы ({interests?.length || 0}/8):</p>
                 <div className={styles.interests_wrapper}>
-                  {interests.map((item, index) => (
-                    <div className={styles.interests_item}>
-                      <p>{interestsObj[item]}</p>
-                      <div
-                        className={styles.edit_interest}
-                        onClick={() => deleteInterest(index)}
-                      >
-                        <p>-</p>
-                      </div>
+                  {/* {interests.map((item, index) => ( */}
+                  <div className={styles.interests_item}>
+                    <p>{interestsObj[updatedUser?.interests]}</p>
+                    <div
+                      className={styles.edit_interest}
+                      // onClick={() => deleteInterest(index)}
+                    >
+                      <p>-</p>
                     </div>
-                  ))}
+                  </div>
+                  {/* ))} */}
                   {showInterests ? (
                     <FormControl
                       sx={{

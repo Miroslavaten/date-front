@@ -87,6 +87,7 @@ const recsSlice = createSlice({
         state.recs = action.payload;
         state.status = "resolved";
         state.error = null;
+        console.log(state.recs);
       })
       .addCase(getRecs.rejected, setError)
       .addCase(likeUser.pending, setLoading)

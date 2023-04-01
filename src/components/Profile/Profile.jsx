@@ -28,6 +28,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getUserDetails } from "../../redux/features/userProfileSlice/userProfileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../Sidebar/Sidebar";
+import Navbar from "../Navbar/Navbar";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const Profile = () => {
   }, [dispatch]);
 
   console.log("userDetails", user);
+  console.log(user.images[0].image);
 
   const navigate = useNavigate();
 
@@ -60,12 +62,13 @@ const Profile = () => {
       {/* <div className={styles.sidebar}></div> */}
       <Sidebar />
       <div className={styles.profile_container}>
-        <div className={styles.user}></div>
+        <Navbar />
+        {/* <div className={styles.user}></div> */}
         <div className={styles.profile}>
           <div
             className={styles.frontImg}
             style={{
-              backgroundImage: `url(${user?.images[0]?.image})`,
+              backgroundImage: `url(${user?.images[0].image})`,
             }}
           ></div>
           <div className={styles.profile_left}>
@@ -170,11 +173,11 @@ const Profile = () => {
               <div className={styles.interests_list}>
                 <p>Мои интересы ({user?.interests.length}/8):</p>
                 <div className={styles.interests_wrapper}>
-                  {user?.interests.map((item) => (
-                    <div className={styles.interests_item}>
-                      <span>{interestsObj[item]}</span>
-                    </div>
-                  ))}
+                  {/* {user?.interests.map((item) => ( */}
+                  <div className={styles.interests_item}>
+                    <span>{interestsObj[user?.interests]}</span>
+                  </div>
+                  {/* ))} */}
                 </div>
               </div>
               <div

@@ -6,7 +6,9 @@ import likes from "../../assets/images/likes.png";
 import messages from "../../assets/images/messages.png";
 import profile from "../../assets/images/profile.png";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserId } from "../../redux/features/userSlice/authSlice";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -16,6 +18,11 @@ const Sidebar = () => {
   const [showChat, setShowChat] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const user_id = useSelector((state) => state.auth.user_id);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserId());
+  }, [dispatch]);
 
   return (
     <div className={styles.sidebar}>
