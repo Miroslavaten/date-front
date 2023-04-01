@@ -11,18 +11,20 @@ import EditProfilePage from "./Pages/EditProfilePage/EditProfilePage.jsx";
 import MainPage from "./Pages/MainPage/MainPage";
 import ProfileDetailsPage from "./Pages/ProfileDetailsPage/ProfileDetailsPage.jsx";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage.jsx";
+import RecsPage from "./Pages/Recs/RecsPage.jsx";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage.jsx";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
-    { link: "/", element: <MainPage />, id: 1 },
-    { link: "/login", element: <LoginPage />, id: 2 },
+    { link: "/", element: <LoginPage />, id: 1 },
+    { link: "/main", element: <MainPage />, id: 2 },
     { link: "/register", element: <RegisterPage />, id: 3 },
     { link: "/activate/:code", element: <ActivatePage />, id: 4 },
     { link: "/profiles", element: <Profiles />, id: 5 },
     { link: "/profile-details/:id", element: <ProfileDetailsPage />, id: 6 },
     { link: "/edit-profile/:id", element: <EditProfilePage />, id: 7 },
     { link: "/profile/:id", element: <ProfilePage />, id: 8 },
+    { link: "/recs", element: <RecsPage />, id: 9 },
   ];
   return (
     <Routes>
