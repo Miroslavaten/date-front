@@ -250,7 +250,7 @@
 }
 
 .recs-bottom {
-  width: 90%;
+  width: 95%;
   height: 20%;
   display: flex;
   gap: 3%;
@@ -276,12 +276,12 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 1.8%;
+  padding: 1.2%;
   box-sizing: border-box;
 }
 
 .my-info_title {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .my-info_desc {
@@ -302,7 +302,7 @@
 }
 
 .my-interests h5 {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .my-interests-list {
@@ -311,7 +311,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1%;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 .interests-item {
   display: inline-block;
@@ -322,4 +322,19 @@
   border-radius: 30px;
   width: auto;
   position: relative;
+}
+
+.recsPage .swiper {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.recsPage .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 55%;
+  height: 98%;
+  border-radius: 25px;
 }

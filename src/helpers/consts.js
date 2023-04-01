@@ -16,8 +16,18 @@ export const API_PROFILE =
 export const API_RECS =
   "https://tinder-web.onrender.com/api/v1/recommendations/";
 
+// !==================== USER_ID =======================
+
 export const API_USER_ID =
   "https://tinder-web.onrender.com/api/v1/account/get_user_id/";
+
+// !==================== LIKE =======================
+export const API_LIKE =
+  "https://tinder-web.onrender.com/api/v1/likedislike/like/";
+
+// !==================== DISLIKE =======================
+export const API_DISLIKE =
+  "https://tinder-web.onrender.com/api/v1/likedislike/dislike/";
 
 export const orientationObj = {
   HE: "Гетеро",

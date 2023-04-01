@@ -182,7 +182,7 @@ const Main = () => {
             >
               {users.map((user, index) => (
                 <SwiperSlide>
-                  <TinderCard
+                  {/* <TinderCard
                     ref={childRefs[index]}
                     onSwipe={(dir) => swiped(dir, user.name, index)}
                     onCardLeftScreen={() => outOfFrame(user.name, index)}
@@ -190,67 +190,67 @@ const Main = () => {
                     // onSwipe={(direction) => onSwipe(direction, user.name)}
                     // onCardLeftScreen={() => onCardLeftScreen(user.name)}
                     preventSwipe={["up", "down"]}
-                  >
-                    <div className="card">
-                      <div className="card-content">
-                        <h3 className="card-name">
-                          {user.name} {user.surname}
-                        </h3>
-                        <div className="card-info">
-                          <div className="card-status">
-                            <div className="status-icon">
-                              <img
-                                src={require("../../assets/images/status.png")}
-                                alt=""
-                              />
-                            </div>
-                            <p>{statusObj[user.status]}</p>
+                  > */}
+                  <div className="card">
+                    <div className="card-content">
+                      <h3 className="card-name">
+                        {user.name} {user.surname}
+                      </h3>
+                      <div className="card-info">
+                        <div className="card-status">
+                          <div className="status-icon">
+                            <img
+                              src={require("../../assets/images/status.png")}
+                              alt=""
+                            />
                           </div>
-                          <div className="card-age">
-                            <div className="status-icon">
-                              <img
-                                src={require("../../assets/images/age.png")}
-                                alt=""
-                              />
-                            </div>
-                            <p>{user.age}</p>
-                          </div>
+                          <p>{statusObj[user.status]}</p>
                         </div>
-                        <div className="card-actions">
-                          <div className="action-left">
-                            <div
-                              className="dislike"
-                              // onClick={() => onSwipe("left")}
-                              onClick={() => swipe("left")}
-                            >
-                              <img
-                                onClick={() => console.log("click")}
-                                src={require("../../assets/images/dislike.png")}
-                                alt=""
-                              />
-                            </div>
-                            <div className="star">
-                              <img
-                                src={require("../../assets/images/star.png")}
-                                alt=""
-                              />
-                            </div>
+                        <div className="card-age">
+                          <div className="status-icon">
+                            <img
+                              src={require("../../assets/images/age.png")}
+                              alt=""
+                            />
                           </div>
-
+                          <p>{user.age}</p>
+                        </div>
+                      </div>
+                      <div className="card-actions">
+                        <div className="action-left">
                           <div
-                            className="like"
-                            // onClick={() => onSwipe("right")}
-                            onClick={() => swipe("right")}
+                            className="dislike"
+                            // onClick={() => onSwipe("left")}
+                            onClick={() => swipe("left")}
                           >
                             <img
-                              src={require("../../assets/images/heart.png")}
+                              onClick={() => console.log("click")}
+                              src={require("../../assets/images/dislike.png")}
+                              alt=""
+                            />
+                          </div>
+                          <div className="star">
+                            <img
+                              src={require("../../assets/images/star.png")}
                               alt=""
                             />
                           </div>
                         </div>
+
+                        <div
+                          className="like"
+                          // onClick={() => onSwipe("right")}
+                          onClick={() => swipe("right")}
+                        >
+                          <img
+                            src={require("../../assets/images/heart.png")}
+                            alt=""
+                          />
+                        </div>
                       </div>
                     </div>
-                  </TinderCard>
+                  </div>
+                  {/* </TinderCard> */}
                 </SwiperSlide>
               ))}
             </Swiper>
